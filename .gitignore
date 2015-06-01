@@ -10,6 +10,7 @@
 /tmp/
 /log
 /config/database.yml
+/config/boot_app.yml
 
 ## Specific to RubyMotion:
 .dat*
