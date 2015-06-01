@@ -1,4 +1,4 @@
-class Trouble < Base
+class Trouble < ActiveRecord::Base
     
   validates :question, presence: true
   validates :encrypt_question, presence: true
