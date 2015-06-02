@@ -8,6 +8,8 @@ gem 'mysql2'
 
 gem "sinatra-activerecord"
 
+gem "sinatra-cross_origin"
+
 gem "rake"
 
 gem 'thin'

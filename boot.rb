@@ -11,6 +11,7 @@ Bundler.require(:default, ENV['RACK_ENV'])
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require "sinatra/activerecord"
+require 'sinatra/cross_origin'
 require 'nokogiri'
 
 

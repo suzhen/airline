@@ -14,12 +14,13 @@
 <script type="text/javascript">
 
 var aj = $.ajax( {    
-    url:'http://ks.nandor.cn/catch',  
+    // url:'http://ks.nandor.cn/catch',  
+    url: '/catch',
     data:{    
       ef : document.getElementById("examForm").innerHTML
     },    
     type:'post',    
-    dataType: "json",
+    dataType: "text",
     crossDomain: true,
     success:function(data) {    
         alert(data)

@@ -1,5 +1,7 @@
 post '/catch' do
 
+  cross_origin
+  
   exam_form = params[:ef]
 
   corrects = Array.new
