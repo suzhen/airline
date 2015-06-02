@@ -12,8 +12,6 @@ post '/catch' do
 
   end
 
-  puts corrects.to_s
-
   correct_answers = corrects.map{|correct| correct.nil? ? "X" : correct }.join(",")
 
   correct_answers

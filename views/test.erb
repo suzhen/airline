@@ -14,13 +14,13 @@
 <script type="text/javascript">
 
 var aj = $.ajax( {    
-    url:'catch',// 跳转到 action    
+    url:'http://ks.nandor.cn/catch',  
     data:{    
       ef : document.getElementById("examForm").innerHTML
     },    
     type:'post',    
-    cache:false,    
-    dataType:'text',    
+    dataType: "json",
+    crossDomain: true,
     success:function(data) {    
         alert(data)
      },    
@@ -28,6 +28,8 @@ var aj = $.ajax( {
           alert("异常！");    
      }    
 });  
+
+
 
 
 
