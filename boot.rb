@@ -13,6 +13,7 @@ require 'sinatra/reloader' if development?
 require "sinatra/activerecord"
 require 'sinatra/cross_origin'
 require 'nokogiri'
+require "oj"
 
 
 # Set project configuration

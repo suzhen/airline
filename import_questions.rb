@@ -2,7 +2,6 @@ require 'roo'
 require "active_support"
 require 'active_support/core_ext'
 require 'digest'
-require "oj"
 require "./boot"
 
 spreadsheetx = Roo::Spreadsheet.open('./questions/airlinexlsx.xlsx')
@@ -22,8 +21,18 @@ header = spreadsheetx.row(1)
 
   answers =  Hash[('A'..'F').to_a.zip(_answers).select{ |answer| !answer[1].nil? }]
 
-  correct = spreadsheetx.row(i)[7].gsub(/\;/, "_")
+  corrects = spreadsheetx.row(i)[7].split(";") #.gsub(/\;/, "_")
 
-  Trouble.create(:question=>question,:encrypt_question=>encrypt_question,:answers=>Oj.dump(answers),:correct=>correct)
+  q = Question.new(:stem=>question,:encrypt_stem=>encrypt_question)
+
+  answers.each_pair do | key, value |
+
+    q.answers.build(:item=>value,:encrypt_item=> Digest::MD5.new.update(value).hexdigest,:checked=> corrects.include?(key) )
+
+  end
+  
+  q.save
+
+  # Trouble.create(:question=>question,:encrypt_question=>encrypt_question,:answers=>Oj.dump(answers),:correct=>correct)
 
  end

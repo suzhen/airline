@@ -49,7 +49,7 @@ ActiveSupport.on_load(:active_record) do
 end
 
 # Set autoload directory
-%w{models controllers libs}.each do |dir|
+%w{models controllers lib}.each do |dir|
   Dir.glob(File.expand_path("../#{dir}", __FILE__) + '/**/*.rb').each do |file|
     require file
   end

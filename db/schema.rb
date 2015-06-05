@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531165702) do
+ActiveRecord::Schema.define(version: 20150603040100) do
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "item",         limit: 65535, null: false
+    t.string   "encrypt_item", limit: 255
+    t.integer  "code",         limit: 4
+    t.boolean  "checked",      limit: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "question_id",  limit: 4
+  end
+
+  add_index "answers", ["code"], name: "index_answers_on_code", using: :btree
+  add_index "answers", ["encrypt_item"], name: "index_answers_on_encrypt_item", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "stem",         limit: 65535, null: false
+    t.string   "encrypt_stem", limit: 255
+    t.integer  "code",         limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "questions", ["code"], name: "index_questions_on_code", using: :btree
+  add_index "questions", ["encrypt_stem"], name: "index_questions_on_encrypt_stem", using: :btree
 
   create_table "troubles", force: :cascade do |t|
     t.text     "question",         limit: 65535, null: false
